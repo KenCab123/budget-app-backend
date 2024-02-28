@@ -28,7 +28,7 @@ transactions.get('/:id', (req, res) => {
 
 //CREATE
 transactions.post('/', validateForm, (req, res) => {
-    let id = transactionsArray[transactionsArray.length - 1].id + 1
+    let id = transactionsArray.length > 0 ? transactionsArray[transactionsArray.length - 1].id + 1 : 1
     req.body.id = id
     transactionsArray.push(req.body)
     res.json({transactions: transactionsArray})
