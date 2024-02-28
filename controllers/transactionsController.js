@@ -21,6 +21,12 @@ transactions.get('/:id', (req, res) => {
     res.json({ transaction})
 })
 
-
+//CREATE
+transactions.post('/', (req, res) => {
+    let id = transactionsArray[transactionsArray.length - 1].id + 1
+    req.body.id = id
+    transactionsArray.push(req.body)
+    res.json({transactions: transactionsArray})
+})
 
 module.exports = transactions
