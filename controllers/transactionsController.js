@@ -47,4 +47,13 @@ transactions.put("/:id", (req,res) => {
         res.json({error: "ERROR"})
     }
 })
+
+//DELETE
+transactions.delete("/:id", (req, res) => {
+    const {id} = req.params
+
+    transactionsArray = transactionsArray.filter(t => t.id !== +id)
+
+    res.json({transactions: transactionsArray})
+})
 module.exports = transactions
