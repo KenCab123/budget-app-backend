@@ -1,6 +1,11 @@
 // Import express to use the ROUTER
 const express = require(`express`)
 
+function validateForm (req,res,next) {
+    if(!req.body.item_name || !req.body.category || !req.body.amount || !req.body.date || !req.body.from ) res.status(400).json({message: `Invalid Inputs`}) 
+    else next()
+  }
+
 // Create a router
 const transactions = express.Router()
 
@@ -22,7 +27,7 @@ transactions.get('/:id', (req, res) => {
 })
 
 //CREATE
-transactions.post('/', (req, res) => {
+transactions.post('/', validateForm, (req, res) => {
     let id = transactionsArray[transactionsArray.length - 1].id + 1
     req.body.id = id
     transactionsArray.push(req.body)
