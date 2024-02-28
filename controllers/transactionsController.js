@@ -34,4 +34,17 @@ transactions.post('/', validateForm, (req, res) => {
     res.json({transactions: transactionsArray})
 })
 
+//EDIT
+transactions.put("/:id", (req,res) => {
+    const {id} = req.params
+
+    const transactionIndex = transactionsArray.findIndex(t => t.id === +id)
+
+    if(transactionIndex > -1) {
+        transactionsArray[transactionIndex] = req.body
+        res.json({transactions: transactionsArray})
+    } else {
+        res.json({error: "ERROR"})
+    }
+})
 module.exports = transactions
