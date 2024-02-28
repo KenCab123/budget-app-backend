@@ -12,6 +12,15 @@ transactions.get('/', (req, res) => {
     res.json({ transactions: transactionsArray})
 })
 
+// SHOW
+transactions.get('/:id', (req, res) => {
+    const {id} = req.params
+
+    const transaction = transactionsArray.find(t => t.id === +id)
+
+    res.json({ transaction})
+})
+
 
 
 module.exports = transactions
