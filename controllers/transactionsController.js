@@ -2,7 +2,9 @@
 const express = require(`express`)
 
 function validateForm (req,res,next) {
-    if(!req.body.item_name || !req.body.category || !req.body.amount || !req.body.date || !req.body.from ) res.status(400).json({message: `Invalid Inputs`}) 
+    const alphabet = /^[a-zA-Z\s]*$/;
+
+    if(!req.body.item_name || !req.body.category || !req.body.amount || !req.body.date || !req.body.from || !alphabet.test(req.body.item_name) || !alphabet.test(req.body.from) || !alphabet.test(req.body.category) ) res.status(400).json({message: `Invalid Inputs`}) 
     else next()
   }
 
@@ -35,7 +37,7 @@ transactions.post('/', validateForm, (req, res) => {
 })
 
 //EDIT
-transactions.put("/:id", (req,res) => {
+transactions.put("/:id", validateForm, (req,res) => {
     const {id} = req.params
 
     const transactionIndex = transactionsArray.findIndex(t => t.id === +id)

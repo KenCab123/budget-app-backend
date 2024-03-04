@@ -5,7 +5,8 @@ module.exports = [
       amount: 5000.00,
       date: "2024-02-28",
       from: "Employer",
-      category: "Income"
+      category: "Income",
+      isChecked: true
     },
     {
       id: 2,
@@ -13,7 +14,8 @@ module.exports = [
       amount: -150.00,
       date: "2024-02-27",
       from: "Grocery store",
-      category: "Food"
+      category: "Food",
+      isChecked: false
     },
     {
       id: 3,
@@ -21,7 +23,8 @@ module.exports = [
       amount: 1000.00,
       date: "2024-02-26",
       from: "Bank",
-      category: "Savings"
+      category: "Savings",
+      isChecked: true
     },
     {
       id: 4,
@@ -29,7 +32,8 @@ module.exports = [
       amount: -50.00,
       date: "2024-02-25",
       from: "Pet store",
-      category: "Pets"
+      category: "Pets",
+      isChecked: false
     }
   ]
   
